@@ -131,10 +131,18 @@
     FilterFog.prototype.render = function(){
       var opacityPercent = (''+settings.opacity).slice(2,4);
       var filterBlurRadius = this.settings.blurRadius;
-      $(this.element).css({
-        '-webkit-filter': 'blur('+filterBlurRadius+'px)',
-        opacity: settings.opacity
-      });
+	  
+		  if(filterBlurRadius == 0 ){
+			  $(this.element).css({
+				'-webkit-filter': 'none',
+				opacity: settings.opacity
+			  });
+		  }else{
+			  $(this.element).css({
+				'-webkit-filter': 'blur('+filterBlurRadius+'px)',
+				opacity: settings.opacity
+			  });  
+		}
     }
 
     return this.each(function(index, element) {
